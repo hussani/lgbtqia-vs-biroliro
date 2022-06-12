@@ -63,6 +63,17 @@ public class MinHeap {
         heap[j] = temp;
     }
 
+    public void decreaseKey(int i, int newValue) {
+        if (newValue > heap[i]) {
+            throw new IllegalArgumentException("New value is greater than current value");
+        }
+        heap[i] = newValue;
+        while (i != 0 && heap[parent(i)] > heap[i]) {
+            swap(i, parent(i));
+            i = parent(i);
+        }
+    }
+
     private void heapifyMin(int i) {
         int l = leftChild(i);
         int r = rightChild(i);

@@ -34,6 +34,10 @@ public class MinHeapAdj {
         currentSize++;
     }
 
+    public int getSize() {
+        return currentSize;
+    }
+
     public AdjNode extractMin() {
         if (currentSize == 0) {
             throw new IllegalStateException("Heap is empty");

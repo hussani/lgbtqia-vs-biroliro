@@ -4,44 +4,26 @@ import com.hussani.lgbtqia.datastructure.AdjNode;
 import com.hussani.lgbtqia.datastructure.GraphAdjList;
 import com.hussani.lgbtqia.datastructure.MinHeap;
 import com.hussani.lgbtqia.datastructure.MinHeapAdj;
+import com.hussani.lgbtqia.datastructure.ShortestPath;
 
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        GraphAdjList graph  = new GraphAdjList(5);
+        graph.addEdge(0, 1, 9);
+        graph.addEdge(0, 2, 6);
+        graph.addEdge(0, 3, 5);
+        graph.addEdge(0, 4, 3);
+        graph.addEdge(2, 1, 2);
+        graph.addEdge(2, 3, 4);
 
-        int[] keys = new int[] {12, 11, 13, 5, 6, 7};
-        MinHeap minHeap = new MinHeap(keys);
+        ShortestPath shortestPath = new ShortestPath(graph);
 
-        GraphAdjList graph  = new GraphAdjList(7);
-        graph.addEdge(0, 1, 5);
-        graph.addEdge(0, 4, 9);
-        graph.addEdge(1, 2, 12);
-        graph.addEdge(1, 3, 15);
-        graph.addEdge(1, 4, 4);
-        graph.addEdge(2, 3, 3);
-        graph.addEdge(2, 4, 11);
-        graph.addEdge(3, 4, 11);
+        int source = 2;
+        int[] distances = shortestPath.dijkstra(source);
 
-        AdjNode[] adjNodes = new AdjNode[] {
-                new AdjNode(2, 12),
-                new AdjNode(1, 5),
-                new AdjNode(4, 9),
-                new AdjNode(4, 11),
-                new AdjNode(4, 4),
-                new AdjNode(3, 15),
-                new AdjNode(4, 11),
-                new AdjNode(3, 3),
-        };
-
-        MinHeapAdj minHeapAdj = new MinHeapAdj(adjNodes);
-
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
-        System.out.println("MinHeap: " + minHeapAdj.extractMin());
+        for (int i = 0; i < distances.length; i++) {
+            System.out.println("Distance from " + source + " to " + i + " is " + distances[i]);
+        }
     }
 }

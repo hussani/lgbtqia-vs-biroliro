@@ -2,7 +2,7 @@ package com.hussani.lgbtqia.datastructure;
 
 public class GraphAdjList {
 
-    final AdjNode[] graph;
+    private final AdjNode[] graph;
 
     public GraphAdjList(AdjNode[] graph) {
         this.graph = graph;
@@ -24,5 +24,9 @@ public class GraphAdjList {
 
     public AdjNode getAdjacentVertex(int vertex) {
         return graph[vertex];
+    }
+
+    public int getNumberOfVertices() {
+        return graph.length;
     }
 }
