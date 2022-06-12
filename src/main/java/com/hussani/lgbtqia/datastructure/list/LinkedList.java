@@ -20,4 +20,16 @@ public class LinkedList<T> {
         }
     }
 
+    public boolean isEmpty() {
+        return null == head;
+    }
+
+    public void print() {
+        ListNode<T> current = head;
+        while (current != null) {
+            System.out.print(current.getData() + " ");
+            current = current.getNext();
+        }
+        System.out.println();
+    }
 }
